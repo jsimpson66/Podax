@@ -602,4 +602,23 @@ public class PodcastProvider extends ContentProvider {
 		values.put(PodcastProvider.COLUMN_QUEUE_POSITION, (Integer) null);
 		context.getContentResolver().update(uri, values, null, null);
 	}
+	
+	public static Cursor getPodcast(Context context, long podcastId) {
+		String[] projection = new String[] {
+				PodcastProvider.COLUMN_ID,
+				PodcastProvider.COLUMN_MEDIA_URL,
+				PodcastProvider.COLUMN_DURATION,
+				PodcastProvider.COLUMN_LINK,
+		};
+		Cursor c = context.getContentResolver().query(PodcastProvider.getContentUri(podcastId), projection, null, null, null);
+		return c;
+		 
+	}
+	
+	
+	public Cursor queryPodcast(){
+		
+		return null;
+		
+	}
 }
